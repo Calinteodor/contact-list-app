@@ -5,7 +5,7 @@ import styles from './styles';
 
 
 interface IRandomScrollButtonProps {
-    onPress: any;
+    onPress?: any;
 }
 
 const RandomScrollButton = (props: IRandomScrollButtonProps): JSX.Element => {
