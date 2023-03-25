@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -22,7 +22,7 @@ import {
   Header
 } from 'react-native/Libraries/NewAppScreen';
 
-import ContactCard from './src/components/contact-card/components/ContactCard';
+import ContactCardList from './src/components/contact-card/components/ContactCardList';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -72,12 +72,9 @@ function App(): JSX.Element {
         style={backgroundStyle}>
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-              flex: 1,
-              width: '100%',
-              height: '100%'
+            backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
           }}>
-          <ContactCard />
+          <ContactCardList />
         </View>
       </ScrollView>
     </SafeAreaView>
