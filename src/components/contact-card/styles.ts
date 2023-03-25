@@ -10,7 +10,7 @@ export default {
         flexDirection: 'row',
         height: 120,
         justifyItems: 'space-between',
-        marginVertical: 16,
+        margin: 32,
         width: 320
     },
 
@@ -46,6 +46,50 @@ export default {
     },
 
     contactCardEmailText: {
-        paddingTop: 4
-    }
+        paddingTop: 4,
+        width: 184
+    },
+
+    centeredView: {
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+
+    contactCardInfoModalContainer: {
+        backgroundColor: 'white',
+        elevation: 4,
+        margin: 24,
+        padding: 32,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+    },
+
+    contactCardInfoText: {
+        fontSize: 14,
+        fontWeight: 'normal',
+        paddingVertical: 8
+    },
+
+    closeContactCardInfoModalButton: {
+        alignSelf: 'center',
+        backgroundColor: '#0045B3',
+        borderRadius: 4,
+        elevation: 2,
+        height: 40,
+        justifyContent: 'center',
+        marginTop: 16,
+        width: 144
+    },
+
+    closeContactCardInfoModalLabel: {
+        alignSelf: 'center',
+        color: 'white'
+    },
 };

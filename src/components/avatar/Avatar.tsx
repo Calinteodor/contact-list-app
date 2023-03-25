@@ -4,7 +4,7 @@ import {
     View
 } from 'react-native';
 
-import styles from '../styles';
+import styles from './styles';
 
 
 interface IAvatarProps {
@@ -12,9 +12,9 @@ interface IAvatarProps {
     testID?: string;
 }
 
-const Avatar = (props: IAvatarProps) => {
+const Avatar = (props: IAvatarProps): JSX.Element => {
     const { source, testID } = props;
-    const localSource = '../../../images/avatar.png';
+    const localSource = '../../images/avatar.png';
 
     const imageSource = source ? source : require(localSource);
 

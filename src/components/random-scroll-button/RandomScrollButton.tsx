@@ -1,15 +1,24 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { StyleProp, Text, TouchableOpacity } from 'react-native';
 
-import styles
+import styles from './styles';
 
 
-const RandomScrollButton = () => {
+interface IRandomScrollButtonProps {
+    onPress: any;
+}
+
+const RandomScrollButton = (props: IRandomScrollButtonProps): JSX.Element => {
+    const { onPress } = props;
+
     return (
-        <Button
-            color = '#f194ff'
-            style = { styles.randomScrollButton }
-            title = 'Press to scroll' />
+        <TouchableOpacity
+            onPress = { onPress }
+            style = { styles.randomScrollButton as StyleProp<any> } >
+            <Text style = { styles.randomScrollLabel as StyleProp<any> }>
+                Scroll
+            </Text>
+        </TouchableOpacity>
     )
 };
 
