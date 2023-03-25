@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import Avatar from '../../avatar/components/Avatar';
+
 import styles from '../styles';
 
 
@@ -14,27 +15,32 @@ interface IContactCardProps {
     email?: string;
     firstName?: string;
     lastName?: string;
+    onLongPress?: any;
+    source?: any;
 }
 
 const ContactCard = (props: IContactCardProps) => {
+    const { email, firstName, lastName, onLongPress, source } = props;
+
     return (
         <TouchableOpacity
+            onLongPress = { onLongPress }
             style = { [
             styles.contactCardContainer as StyleProp<any>,
             styles.elevation
         ] }>
-            <Avatar />
-            <View style = { styles.contactCardDetailsContainer as StyleProp<any> }>
+            <Avatar source = { source } />
+            <View>
                 <View style = { styles.contactCardNameContainer as StyleProp<any> }>
                     <Text style = { styles.contactCardFNameText as StyleProp<any> }>
-                        First Name
+                        { firstName }
                     </Text>
                     <Text style = { styles.contactCardLNameText as StyleProp<any> }>
-                        Last Name
+                        { lastName }
                     </Text>
                 </View>
                 <Text style = { styles.contactCardEmailText }>
-                    Email
+                    { email }
                 </Text>
             </View>
         </TouchableOpacity>

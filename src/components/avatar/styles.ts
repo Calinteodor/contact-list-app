@@ -9,7 +9,7 @@ export default {
         borderWidth: 1,
         borderRadius: 104,
         objectFit: 'fill',
-        maxHeight: 64,
-        maxWidth: 64
+        width: 64,
+        height: 64
     }
 };

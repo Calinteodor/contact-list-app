@@ -4,6 +4,7 @@ export default {
         alignItems: 'center',
         alignSelf: 'center',
         backgroundColor: 'white',
+        borderWidth: 1,
         display: 'flex',
         flex: 1,
         flexDirection: 'row',
@@ -16,16 +17,13 @@ export default {
     elevation: {
         shadowColor: "red",
         shadowOffset: {
-            width: 0,
-            height: 12,
+            height: -18,
+            width: 16
         },
         shadowOpacity: 0.8,
-        shadowRadius: 16,
+        shadowRadius: 8,
 
-        elevation: 24,
-    },
-
-    contactCardDetailsContainer: {
+        elevation: 24
     },
 
     contactCardNameContainer: {
@@ -44,7 +42,7 @@ export default {
         alignSelf: 'center',
         fontSize: 16,
         fontWeight: 'bold',
-        paddingLeft: 8
+        paddingLeft: 4
     },
 
     contactCardEmailText: {
