@@ -28,7 +28,6 @@ const ContactCard = (props: IContactCardProps): JSX.Element => {
     const { address, email, employment, firstName, lastName, phoneNumber, source } = props;
     const [ cardModalVisibility, setCardModalVisibility ] = useState(false);
 
-
     const onLongPress = useCallback(() => {
         setCardModalVisibility(true);
     }, [ cardModalVisibility ])

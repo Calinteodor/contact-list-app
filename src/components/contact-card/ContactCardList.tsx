@@ -1,7 +1,7 @@
-import React, {ForwardedRef, forwardRef, Suspense, useCallback, useState} from 'react';
+import React, { ForwardedRef, forwardRef, Suspense, useCallback, useState } from 'react';
+import { FlatList } from 'react-native';
 
 import SkeletonCard from '../skeleton/SkeletonCard';
-import {FlatList} from "react-native";
 
 const ContactCard = React.lazy(() => import('./ContactCard'));
 
@@ -16,17 +16,15 @@ let viewabilityConfig = {
 
 const ContactCardList = forwardRef((props: IContactCardListProps, ref: ForwardedRef<any>): JSX.Element => {
     const { data, loading } = props;
-    const [ isViewAble, setIsViewable ] = useState(false);
+    const [ changedItem, setChangedItem ] = useState();
 
     const onViewableItemsChanged = useCallback(({ changed }: any) => {
         changed.map((item: any) => {
-            if(item.isViewable) {
-                setIsViewable(true);
-            } else {
-                setIsViewable(false);
-            }
+            setChangedItem(item);
         })
     }, [ viewabilityConfig ])
+
+    console.log(changedItem, 'CHANGED ITEM')
 
     const renderItem = ({item}: any) => {
         if (loading) {
