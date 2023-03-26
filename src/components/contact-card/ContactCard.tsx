@@ -11,22 +11,21 @@ import Avatar from '../avatar/Avatar';
 import ContactCardModal from './ContactCardModal';
 
 import styles from './styles';
-import SkeletonCard from "../skeleton/SkeletonCard";
 
 
 interface IContactCardProps {
     address?: any;
     email?: string;
     employment?: any;
-    firstName?: string;
     isViewAble?: boolean;
+    firstName?: string;
     lastName?: string;
     phoneNumber?: string;
     source?: any;
 }
 
 const ContactCard = (props: IContactCardProps): JSX.Element => {
-    const { address, email, employment, firstName, isViewAble, lastName, phoneNumber, source } = props;
+    const { address, email, employment, firstName, lastName, phoneNumber, source } = props;
     const [ cardModalVisibility, setCardModalVisibility ] = useState(false);
 
 
@@ -36,31 +35,29 @@ const ContactCard = (props: IContactCardProps): JSX.Element => {
 
     return (
         <>
-            {
-                isViewAble ? <TouchableOpacity
-                    onLongPress = { onLongPress }
-                    style = { [
-                        styles.contactCardContainer as StyleProp<any>,
-                        styles.elevation
-                    ] }>
-                    <Avatar source = { source } />
-                    <View>
-                        <View style = { styles.contactCardNameContainer as StyleProp<any> }>
-                            <Text style = { styles.contactCardFNameText as StyleProp<any> }>
-                                { firstName }
-                            </Text>
-                            <Text style = { styles.contactCardLNameText as StyleProp<any> }>
-                                { lastName }
-                            </Text>
-                        </View>
-                        <Text
-                            numberOfLines = { 1 }
-                            style = { styles.contactCardEmailText }>
-                            { email }
+            <TouchableOpacity
+                onLongPress = { onLongPress }
+                style = { [
+                    styles.contactCardContainer as StyleProp<any>,
+                    styles.elevation
+                ] }>
+                <Avatar source = { source } />
+                <View>
+                    <View style = { styles.contactCardNameContainer as StyleProp<any> }>
+                        <Text style = { styles.contactCardFNameText as StyleProp<any> }>
+                            { firstName }
+                        </Text>
+                        <Text style = { styles.contactCardLNameText as StyleProp<any> }>
+                            { lastName }
                         </Text>
                     </View>
-                </TouchableOpacity> : <SkeletonCard/>
-            }
+                    <Text
+                        numberOfLines = { 1 }
+                        style = { styles.contactCardEmailText }>
+                        { email }
+                    </Text>
+                </View>
+            </TouchableOpacity>
 
             {
                 cardModalVisibility &&

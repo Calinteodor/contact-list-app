@@ -18,8 +18,8 @@ const ContactCardList = forwardRef((props: IContactCardListProps, ref: Forwarded
     const { data, loading } = props;
     const [ isViewAble, setIsViewable ] = useState(false);
 
-    const onViewableItemsChanged = useCallback(( viewableItems: any ) => {
-        viewableItems?.changed.map((item: any, index: number) => {
+    const onViewableItemsChanged = useCallback(({ changed }: any) => {
+        changed.map((item: any) => {
             if(item.isViewable) {
                 setIsViewable(true);
             } else {
@@ -41,7 +41,6 @@ const ContactCardList = forwardRef((props: IContactCardListProps, ref: Forwarded
                 email = { item?.email }
                 employment = { item?.employment }
                 firstName = { item?.first_name }
-                isViewAble = { isViewAble }
                 key = { item?.id }
                 lastName = { item?.last_name }
                 phoneNumber = { item?.phone_number }
@@ -57,7 +56,7 @@ const ContactCardList = forwardRef((props: IContactCardListProps, ref: Forwarded
                 <FlatList
                     data = { data }
                     extraData = { data }
-                    keyExtractor = { (item) => item?.id }
+                    keyExtractor = { (item) => item.id }
                     onViewableItemsChanged = { onViewableItemsChanged }
                     ref = { ref }
                     renderItem = { renderItem }

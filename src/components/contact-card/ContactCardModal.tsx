@@ -32,13 +32,13 @@ const ContactCardModal = (props: IContactCardModalProps): JSX.Element => {
                 <View style = { styles.centeredView as StyleProp<any> }>
                     <View style = { styles.contactCardInfoModalContainer as StyleProp<any> }>
                         <Text style = { styles.contactCardInfoText as StyleProp<any> }>
-                            <Text style={{fontWeight: "bold"}}>Address:</Text> { city }, { street_name }, { street_address }, { zip_code }, { state }, { country }
+                            <Text style = {{ fontWeight: "bold" }}>Address:</Text> { city }, { street_name }, { street_address }, { zip_code }, { state }, { country }
                         </Text>
                         <Text style = { styles.contactCardInfoText as StyleProp<any> }>
-                            <Text style={{fontWeight: "bold"}}>Phone:</Text> { phoneNumber }
+                            <Text style = {{ fontWeight: "bold" }}>Phone:</Text> { phoneNumber }
                         </Text>
                         <Text style = { styles.contactCardInfoText as StyleProp<any> }>
-                            <Text style={{fontWeight: "bold"}}>Title:</Text> { employment?.title }
+                            <Text style = {{ fontWeight: "bold" }}>Title:</Text> { employment?.title }
                         </Text>
                         <TouchableOpacity
                             onPress = { onRequestClose }
