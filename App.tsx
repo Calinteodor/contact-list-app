@@ -20,7 +20,7 @@ const App = (): JSX.Element => {
     };
 
     const onPress = () => {
-        const randomIndex = Math.random() * 10
+        const randomIndex = Math.random() * 4
 
         // @ts-ignore
         ref.current?.scrollToIndex({
