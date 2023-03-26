@@ -16,7 +16,7 @@ const RandomScrollButton = (props: IRandomScrollButtonProps): JSX.Element => {
             onPress = { onPress }
             style = { styles.randomScrollButton as StyleProp<any> } >
             <Text style = { styles.randomScrollLabel as StyleProp<any> }>
-                Scroll
+                Random Scroll
             </Text>
         </TouchableOpacity>
     )
