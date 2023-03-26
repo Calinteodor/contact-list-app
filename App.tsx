@@ -1,11 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import {
     SafeAreaView,
     StatusBar,
@@ -16,17 +9,10 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import ContactCardList from './src/components/contact-card/ContactCardList';
 import RandomScrollButton from './src/components/random-scroll-button/RandomScrollButton';
-import { useFetch } from './src/helpers/useFetch';
-
-const size = 30
-const url = `https://random-data-api.com/api/v2/users?size=${size}&is_xml=true`;
 
 
-function App(): JSX.Element {
+const App = (): JSX.Element => {
     const isDarkMode = useColorScheme() === 'dark';
-
-    const { data, loading } = useFetch(url)
-
     const ref = useRef(null);
 
     const backgroundStyle = {
@@ -34,12 +20,12 @@ function App(): JSX.Element {
     };
 
     const onPress = () => {
-        const randomIndex = Math.random() * size
+        const randomIndex = Math.random() * 10
 
         // @ts-ignore
         ref.current?.scrollToIndex({
             index: randomIndex,
-            animated:true
+            animated: true
         })
     };
 
@@ -50,15 +36,11 @@ function App(): JSX.Element {
                     barStyle = { isDarkMode ? 'light-content' : 'dark-content' }
                     backgroundColor = { backgroundStyle.backgroundColor }
                 />
-                <ContactCardList
-                    data = { data }
-                    key = { data }
-                    loading = { loading }
-                    ref = { ref } />
+                <ContactCardList ref = { ref } />
             </SafeAreaView>
             <RandomScrollButton onPress = { onPress } />
         </>
     );
-}
+};
 
 export default App;

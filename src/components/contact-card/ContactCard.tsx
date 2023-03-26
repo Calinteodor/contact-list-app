@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, {ForwardedRef, forwardRef, useCallback, useState} from 'react';
 import {
     StyleProp,
     Text,
@@ -21,10 +21,11 @@ interface IContactCardProps {
     firstName?: string;
     lastName?: string;
     phoneNumber?: string;
+    ref?: ForwardedRef<any>;
     source?: any;
 }
 
-const ContactCard = (props: IContactCardProps): JSX.Element => {
+const ContactCard = forwardRef((props: IContactCardProps, ref: ForwardedRef<any>): JSX.Element => {
     const { address, email, employment, firstName, lastName, phoneNumber, source } = props;
     const [ cardModalVisibility, setCardModalVisibility ] = useState(false);
 
@@ -36,6 +37,7 @@ const ContactCard = (props: IContactCardProps): JSX.Element => {
         <>
             <TouchableOpacity
                 onLongPress = { onLongPress }
+                ref = { ref }
                 style = { [
                     styles.contactCardContainer as StyleProp<any>,
                     styles.elevation
@@ -69,6 +71,6 @@ const ContactCard = (props: IContactCardProps): JSX.Element => {
             }
         </>
     )
-};
+});
 
 export default ContactCard;

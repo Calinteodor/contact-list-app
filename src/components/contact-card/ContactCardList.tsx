@@ -2,29 +2,38 @@ import React, { ForwardedRef, forwardRef, Suspense, useCallback, useState } from
 import { FlatList } from 'react-native';
 
 import SkeletonCard from '../skeleton/SkeletonCard';
+import { useFetch } from '../../helpers/useFetch';
 
 const ContactCard = React.lazy(() => import('./ContactCard'));
 
-interface IContactCardListProps {
-    data: any;
-    loading: boolean
+
+interface ContactCardListProps {
+    ref: ForwardedRef<any>;
 }
 
-let viewabilityConfig = {
-    itemVisiblePercentThreshold: 75
-};
+const ContactCardList = forwardRef((props:ContactCardListProps, ref: ForwardedRef<any>): JSX.Element => {
+    // const [ changedItem, setChangedItem ] = useState();
+    const [ size, setSize ] = useState(4)
 
-const ContactCardList = forwardRef((props: IContactCardListProps, ref: ForwardedRef<any>): JSX.Element => {
-    const { data, loading } = props;
-    const [ changedItem, setChangedItem ] = useState();
+    const viewabilityConfig = {
+        itemVisiblePercentThreshold: 75
+    };
 
-    const onViewableItemsChanged = useCallback(({ changed }: any) => {
-        changed.map((item: any) => {
-            setChangedItem(item);
-        })
-    }, [ viewabilityConfig ])
+    const url = `https://random-data-api.com/api/v2/users?size=${ size }&is_xml=true`;
+    const { data, loading } = useFetch(url)
 
-    console.log(changedItem, 'CHANGED ITEM')
+    // Track what item changed regarding visibility
+    // const onViewableItemsChanged = useCallback(({ changed }: any) => {
+    //     changed.map((item: any) => {
+    //         setChangedItem(item);
+    //     })
+    // }, [ viewabilityConfig ])
+    //
+    // console.log(changedItem, 'CHANGED ITEM')
+
+    const loadMoreItems = useCallback(() => {
+        setSize(size + 4);
+    }, [ size ]);
 
     const renderItem = ({item}: any) => {
         if (loading) {
@@ -55,7 +64,7 @@ const ContactCardList = forwardRef((props: IContactCardListProps, ref: Forwarded
                     data = { data }
                     extraData = { data }
                     keyExtractor = { (item) => item.id }
-                    onViewableItemsChanged = { onViewableItemsChanged }
+                    onEndReached = { loadMoreItems }
                     ref = { ref }
                     renderItem = { renderItem }
                     viewabilityConfig = { viewabilityConfig } />
