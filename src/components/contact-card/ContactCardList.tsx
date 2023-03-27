@@ -13,7 +13,7 @@ interface ContactCardListProps {
 
 const ContactCardList = forwardRef((props:ContactCardListProps, ref: ForwardedRef<any>): JSX.Element => {
     // const [ changedItem, setChangedItem ] = useState();
-    const [ size, setSize ] = useState(4)
+    const [ size, setSize ] = useState(10)
 
     const viewabilityConfig = {
         itemVisiblePercentThreshold: 75
